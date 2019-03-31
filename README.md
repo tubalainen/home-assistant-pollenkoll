@@ -18,6 +18,7 @@ sensor:
     sensors:
       - city: Borlänge
         hide_city_in_frontend: True (OPTIONAL)
+        days_to_track: 2 (OPTIONAL, possible values 0-3, 0 = today, 1 = today and tomorrow, 2 = today tomorrow and day after tomorrow and so on )
         allergens:
           - Al
           - Alm
