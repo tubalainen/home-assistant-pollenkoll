@@ -132,6 +132,11 @@ class PollenkollSensor(Entity):
         if self._pollen is not None:
             return self._pollen
 
+    @property
+    def unit_of_measurement(self):
+        """Return the unit of measurement."""
+        return '​'
+
     def update(self):
         """Get the latest data from the PVOutput API and updates the state."""
         try:
