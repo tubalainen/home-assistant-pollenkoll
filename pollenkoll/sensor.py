@@ -42,7 +42,7 @@ from homeassistant.components.sensor.rest import RestData
 from homeassistant.const import (CONF_NAME)
 
 _LOGGER = logging.getLogger(__name__)
-_ENDPOINT = 'https://old.pollenkoll.se/wp-content/themes/pollenkoll/api/get_cities.php'
+_ENDPOINT = 'https://pollenkoll.se/wp-content/themes/pollenkoll/api/get_all.json'
 
 ATTR_POLLEN = 'pollen'
 ATTR_TODAY = 'day0_value'
@@ -129,7 +129,10 @@ class PollenkollSensor(Entity):
             self._rest.update()
             self._result = json.loads(self._rest.data)
 
-            for jsonitem in self._result:
+            for datapart in self._result:
+                CitiesData = datapart['CitiesData'];
+
+            for jsonitem in CitiesData:
                 if jsonitem['name'] in self._city:
                     pollen = jsonitem['pollen'];
 
