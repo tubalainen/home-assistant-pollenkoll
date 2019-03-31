@@ -9,13 +9,14 @@ sensor:
   - platform: pollenkoll
     sensors:
       - city: Borlänge
-        hide_city_in_frontend: True
+        hide_city_in_frontend: True (OPTIONAL)
+        days_to_track: 2 (OPTIONAL, possible values 0-3, 0 = today, 1 = today and tomorrow, 2 = today tomorrow and day after tomorrow and so on )
         allergens:
           - Al
           - Alm
           - Hassel
       - city: Jönköping
-        hide_city_in_frontend: False
+        hide_city_in_frontend: False (OPTIONAL)
         allergens:
           - Al
           - Alm
@@ -78,14 +79,22 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
         return False
 
     for sensor in sensors:
-        for allergen in sensor['allergens']:
-            add_devices([PollenkollSensor(rest, name, sensor, allergen)], True)
+        if 'days_to_track' in sensor:
+            i = 0
+            while i <= sensor['days_to_track']:
+                for allergen in sensor['allergens']:
+                    add_devices([PollenkollSensor(rest, name, sensor, allergen, i)], True)
+                i += 1
+        else:
+            for allergen in sensor['allergens']:
+                add_devices([PollenkollSensor(rest, name, sensor, allergen, 0)], True)
+
 
 # pylint: disable=no-member
 class PollenkollSensor(Entity):
     """Representation of a PVOutput sensor."""
 
-    def __init__(self, rest, name, sensor, allergen):
+    def __init__(self, rest, name, sensor, allergen, day):
         """Initialize a PVOutput sensor."""
         self._rest = rest
         self._item = sensor
@@ -93,11 +102,12 @@ class PollenkollSensor(Entity):
         self._state = None
         if 'hide_city_in_frontend' in sensor:
             if sensor['hide_city_in_frontend']:
-                self._name = "Pollennivå " + allergen
+                self._name = "Pollennivå " + allergen + " day" + str(day)
             else:
-                self._name = "Pollennivå " + sensor['city'] + " " + allergen
+                self._name = "Pollennivå " + sensor['city'] + " " + allergen + " day" + str(day)
         else:
-            self._name = "Pollennivå " + sensor['city'] + " " + allergen
+            self._name = "Pollennivå " + sensor['city'] + " " + allergen + " day" + str(day)
+        self._day = day
         self._allergen = allergen
         self._pollen = None
         self._result = None
@@ -132,16 +142,30 @@ class PollenkollSensor(Entity):
             for datapart in self._result:
                 CitiesData = datapart['CitiesData'];
 
-            for jsonitem in CitiesData:
-                if jsonitem['name'] in self._city:
-                    pollen = jsonitem['pollen'];
+            for city in CitiesData:
+                if city['name'] in self._city:
+                    pollen = city['pollen'];
 
             self._pollen = {}
 
             for allergen in pollen:
                 if allergen['type'] == self._allergen:
-                    self._state = allergen['day0_value']
-                #self._pollen.update({allergen['type']: allergen['day0_value']})
+                    if allergen['day' + str (self._day) + '_value'] == 'i.h.':
+                        value = 0;
+                    elif allergen['day' + str (self._day) + '_value'] == 'L':
+                        value = 1;
+                    elif allergen['day' + str (self._day) + '_value'] == 'L-M':
+                        value = 2;
+                    elif allergen['day' + str (self._day) + '_value'] == 'M':
+                        value = 3;
+                    elif allergen['day' + str (self._day) + '_value'] == 'M-H':
+                        value = 4;
+                    elif allergen['day' + str (self._day) + '_value'] == 'H':
+                        value = 5;
+                    elif allergen['day' + str (self._day) + '_value'] == 'H-H+':
+                        value = 6;
+                    self._state = value
+                    self._pollen.update({"Dag": allergen['day' + str (self._day) + '_relative_date'] + ", " + allergen['day' + str (self._day) + '_name'] + " (" + allergen['day' + str (self._day) + '_date'] + ")", "Beskrivning": allergen['day' + str (self._day) + '_desc']})
 
         except TypeError as e:
             self._result = None
