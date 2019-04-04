@@ -9,7 +9,7 @@ This version is also adapted for Home Assistant 0.91 and above (Breaking changes
 
 Visit https://pollenkoll.se/pollenprognos/ to find available cities
 
-Place the folder `pollenkoll` in `<HA_CONFIG_DIR>/custom_components`
+Place the folder including the files `pollenkoll` in `<HA_CONFIG_DIR>/custom_components`
 Add configuration to your `configuration.yaml`
 
 This will create sensors named `senson.pollenniva_CITY_ALLERGEN` or `senson.pollenniva_ALLERGEN` depending on the presence of 'hide_city_in_frontend: True'. The state will be the current level of that allergen.
