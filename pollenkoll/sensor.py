@@ -8,15 +8,15 @@ Example configuration
 sensor:
   - platform: pollenkoll
     sensors:
-      - city: Borlänge
-        hide_city_in_frontend: True (OPTIONAL)
-        days_to_track: 2 (OPTIONAL, possible values 0-3, 0 = today, 1 = today and tomorrow, 2 = today tomorrow and day after tomorrow and so on )
+      - city: Forshaga
+        hide_city_in_frontend: True # (OPTIONAL)
+        days_to_track: 2 #(OPTIONAL, possible values 0-3, 0 = today, 1 = today and tomorrow, 2 = today tomorrow and day after tomorrow and so on )
         allergens:
           - Al
           - Alm
           - Hassel
       - city: Jönköping
-        hide_city_in_frontend: False (OPTIONAL)
+        hide_city_in_frontend: False #(OPTIONAL)
         allergens:
           - Al
           - Alm
@@ -39,7 +39,7 @@ import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity import Entity
 from homeassistant.components.sensor import PLATFORM_SCHEMA
-from homeassistant.components.sensor.rest import RestData
+from homeassistant.components.rest.sensor import RestData
 from homeassistant.const import (CONF_NAME)
 
 _LOGGER = logging.getLogger(__name__)
