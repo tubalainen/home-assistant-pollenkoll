@@ -1,7 +1,11 @@
 # Home Assistant Pollennivå
 
 Custom component for getting current pollen levels from pollenkoll.se
-I started from https://github.com/JohNan/home-assistant-pollenkoll and tweaked it to behave as I wanted. His version gives you all allergens as attriutes on one single entity but I wanted one allergen per entity.
+This code started with https://github.com/simonfalun/home-assistant-pollenkoll and Simon forked it from https://github.com/JohNan/home-assistant-pollenkoll and tweaked it to behave a bit different. JonNans version gives you all allergens as attriutes on one single entity but I wanted one allergen per entity.
+
+I also added a template sensor examples for presenting the pollen status in text.
+
+This version is also adapted for Home Assistant 0.91 and above (Breaking changes)
 
 Visit https://pollenkoll.se/pollenprognos/ to find available cities
 
@@ -16,22 +20,17 @@ Example configuration
 sensor:
   - platform: pollenkoll
     sensors:
-      - city: Borlänge
-        hide_city_in_frontend: True (OPTIONAL)
-        days_to_track: 2 (OPTIONAL, possible values 0-3, 0 = today, 1 = today and tomorrow, 2 = today tomorrow and day after tomorrow and so on )
+      - city: Forshaga
+        hide_city_in_frontend: False # Optional
+        days_to_track: 2 # Optional
         allergens:
-          - Al
-          - Alm
+         - Al
+         - Alm
           - Hassel
-      - city: Jönköping
-        hide_city_in_frontend: False (OPTIONAL)
-        allergens:
-          - Al
-          - Alm
-          - Hassel
-      - city: Skövde
-        allergens:
-          - Al
-          - Alm
-          - Hassel
+         - Björk
+         - Gräs
+         - Gråbo
+         - Bok
+         - Sälg/Vide
+         - Ek
 ```
