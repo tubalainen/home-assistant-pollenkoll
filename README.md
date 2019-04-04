@@ -26,7 +26,7 @@ sensor:
         allergens:
          - Al
          - Alm
-          - Hassel
+         - Hassel
          - Björk
          - Gräs
          - Gråbo
