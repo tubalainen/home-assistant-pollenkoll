@@ -3,7 +3,7 @@
 Custom component for getting current pollen levels from pollenkoll.se
 This code started with https://github.com/simonfalun/home-assistant-pollenkoll and Simon forked it from https://github.com/JohNan/home-assistant-pollenkoll and tweaked it to behave a bit different. JonNans version gives you all allergens as attriutes on one single entity but I wanted one allergen per entity.
 
-I also added a template sensor examples for presenting the pollen status in text.
+I also added a template sensor examples for presenting the pollen status in text. https://github.com/tubalainen/home-assistant-pollenkoll/blob/master/sensor-template.yaml
 
 This version is also adapted for Home Assistant 0.91 and above (Breaking changes)
 
