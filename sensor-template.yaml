@@ -1,0 +1,102 @@
+sensor:
+  - platform: template
+    sensors:
+      pollen_gras:
+        friendly_name: "Pollen: Gräs"
+        value_template: >-
+          {%if states.sensor.pollenniva_forshaga_gras_day0.state | float == 0 %}Pollenfritt
+          {% elif states.sensor.pollenniva_forshaga_gras_day0.state | float == 1 %}Låga halter
+          {% elif states.sensor.pollenniva_forshaga_gras_day0.state | float == 2 %}Låga-måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_gras_day0.state | float == 3 %}Måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_gras_day0.state | float == 4 %}Måttliga-höga halter
+          {% elif states.sensor.pollenniva_forshaga_gras_day0.state | float == 5 %}Höga halter
+          {% elif states.sensor.pollenniva_forshaga_gras_day0.state | float == 6 %}Mycket höga halter
+          {%- endif %}
+      pollen_ek:
+        friendly_name: "Pollen: Ek"
+        value_template: >-
+          {%if states.sensor.pollenniva_forshaga_ek_day0.state | float == 0 %}Pollenfritt
+          {% elif states.sensor.pollenniva_forshaga_ek_day0.state | float == 1 %}Låga halter
+          {% elif states.sensor.pollenniva_forshaga_ek_day0.state | float == 2 %}Låga-måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_ek_day0.state | float == 3 %}Måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_ek_day0.state | float == 4 %}Måttliga-höga halter
+          {% elif states.sensor.pollenniva_forshaga_ek_day0.state | float == 5 %}Höga halter
+          {% elif states.sensor.pollenniva_forshaga_ek_day0.state | float == 6 %}Mycket höga halter
+          {%- endif %}
+      pollen_hassel:
+        friendly_name: "Pollen: Hassel"
+        value_template: >-
+          {%if states.sensor.pollenniva_forshaga_hassel_day0.state | float == 0 %}Pollenfritt
+          {% elif states.sensor.pollenniva_forshaga_hassel_day0.state | float == 1 %}Låga halter
+          {% elif states.sensor.pollenniva_forshaga_hassel_day0.state | float == 2 %}Låga-måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_hassel_day0.state | float == 3 %}Måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_hassel_day0.state | float == 4 %}Måttliga-höga halter
+          {% elif states.sensor.pollenniva_forshaga_hassel_day0.state | float == 5 %}Höga halter
+          {% elif states.sensor.pollenniva_forshaga_hassel_day0.state | float == 6 %}Mycket höga halter
+          {%- endif %}
+      pollen_al:
+        friendly_name: "Pollen: Al"
+        value_template: >-
+          {%if states.sensor.pollenniva_forshaga_al_day0.state | float == 0 %}Pollenfritt
+          {% elif states.sensor.pollenniva_forshaga_al_day0.state | float == 1 %}Låga halter
+          {% elif states.sensor.pollenniva_forshaga_al_day0.state | float == 2 %}Låga-måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_al_day0.state | float == 3 %}Måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_al_day0.state | float == 4 %}Måttliga-höga halter
+          {% elif states.sensor.pollenniva_forshaga_al_day0.state | float == 5 %}Höga halter
+          {% elif states.sensor.pollenniva_forshaga_al_day0.state | float == 6 %}Mycket höga halter
+          {%- endif %}
+      pollen_salg_vide:
+        friendly_name: "Pollen: Sälg/Vide"
+        value_template: >-
+          {%if states.sensor.pollenniva_forshaga_salg_vide_day0.state | float == 0 %}Pollenfritt
+          {% elif states.sensor.pollenniva_forshaga_salg_vide_day0.state | float == 1 %}Låga halter
+          {% elif states.sensor.pollenniva_forshaga_salg_vide_day0.state | float == 2 %}Låga-måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_salg_vide_day0.state | float == 3 %}Måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_salg_vide_day0.state | float == 4 %}Måttliga-höga halter
+          {% elif states.sensor.pollenniva_forshaga_salg_vide_day0.state | float == 5 %}Höga halter
+          {% elif states.sensor.pollenniva_forshaga_salg_vide_day0.state | float == 6 %}Mycket höga halter
+          {%- endif %}
+      pollen_grabo:
+        friendly_name: "Pollen: Gråbo"
+        value_template: >-
+          {%if states.sensor.pollenniva_forshaga_grabo_day0.state | float == 0 %}Pollenfritt
+          {% elif states.sensor.pollenniva_forshaga_grabo_day0.state | float == 1 %}Låga halter
+          {% elif states.sensor.pollenniva_forshaga_grabo_day0.state | float == 2 %}Låga-måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_grabo_day0.state | float == 3 %}Måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_grabo_day0.state | float == 4 %}Måttliga-höga halter
+          {% elif states.sensor.pollenniva_forshaga_grabo_day0.state | float == 5 %}Höga halter
+          {% elif states.sensor.pollenniva_forshaga_grabo_day0.state | float == 6 %}Mycket höga halter
+          {%- endif %}
+      pollen_bok:
+        friendly_name: "Pollen: Bok"
+        value_template: >-
+          {%if states.sensor.pollenniva_forshaga_bok_day0.state | float == 0 %}Pollenfritt
+          {% elif states.sensor.pollenniva_forshaga_bok_day0.state | float == 1 %}Låga halter
+          {% elif states.sensor.pollenniva_forshaga_bok_day0.state | float == 2 %}Låga-måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_bok_day0.state | float == 3 %}Måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_bok_day0.state | float == 4 %}Måttliga-höga halter
+          {% elif states.sensor.pollenniva_forshaga_bok_day0.state | float == 5 %}Höga halter
+          {% elif states.sensor.pollenniva_forshaga_bok_day0.state | float == 6 %}Mycket höga halter
+          {%- endif %}
+      pollen_alm:
+        friendly_name: "Pollen: Alm"
+        value_template: >-
+          {%if states.sensor.pollenniva_forshaga_alm_day0.state | float == 0 %}Pollenfritt
+          {% elif states.sensor.pollenniva_forshaga_alm_day0.state | float == 1 %}Låga halter
+          {% elif states.sensor.pollenniva_forshaga_alm_day0.state | float == 2 %}Låga-måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_alm_day0.state | float == 3 %}Måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_alm_day0.state | float == 4 %}Måttliga-höga halter
+          {% elif states.sensor.pollenniva_forshaga_alm_day0.state | float == 5 %}Höga halter
+          {% elif states.sensor.pollenniva_forshaga_alm_day0.state | float == 6 %}Mycket höga halter
+          {%- endif %}
+      pollen_bjork:
+        friendly_name: "Pollen: Björk"
+        value_template: >-
+          {%if states.sensor.pollenniva_forshaga_bjork_day0.state | float == 0 %}Pollenfritt
+          {% elif states.sensor.pollenniva_forshaga_bjork_day0.state | float == 1 %}Låga halter
+          {% elif states.sensor.pollenniva_forshaga_bjork_day0.state | float == 2 %}Låga-måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_bjork_day0.state | float == 3 %}Måttliga halter
+          {% elif states.sensor.pollenniva_forshaga_bjork_day0.state | float == 4 %}Måttliga-höga halter
+          {% elif states.sensor.pollenniva_forshaga_bjork_day0.state | float == 5 %}Höga halter
+          {% elif states.sensor.pollenniva_forshaga_bjork_day0.state | float == 6 %}Mycket höga halter
+          {%- endif %}
