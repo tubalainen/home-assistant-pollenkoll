@@ -1,6 +1,4 @@
-####################################################################################################
-Use https://github.com/JohNan/home-assistant-pollenkoll instead -- This repo is not being maintained
-####################################################################################################
+*Use https://github.com/JohNan/home-assistant-pollenkoll instead -- This repo is not being maintained*
 
 # Home Assistant Pollennivå
 
