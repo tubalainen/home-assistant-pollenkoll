@@ -1,3 +1,7 @@
+####################################################################################################
+Use https://github.com/JohNan/home-assistant-pollenkoll instead -- This repo is not being maintained
+####################################################################################################
+
 # Home Assistant Pollennivå
 
 Custom component for getting current pollen levels from pollenkoll.se
